@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +23,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
@@ -37,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void prikaziPrenocisca(View view) {
         if (view != null) {
-            JsonArrayRequest request = new JsonArrayRequest(url, jsonArraylistener, errorListener);
+            JsonArrayRequest request = new JsonArrayRequest(url, jsonArraylistener, errorListener) {
+                @Override
+                public Map<String,String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("ApiKey", "SecretKey");
+                    return params;
+                }
+            };
             requestQueue.add(request);
         }
     }
