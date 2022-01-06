@@ -24,18 +24,18 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
-    private TextView ponudniki;
-    private String url = "link do ponudnikov";
+    private TextView prenocisca;
+    private String url = "link do prenočišč";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
-        ponudniki = (TextView) findViewById(R.id.ponudniki);
+        prenocisca = (TextView) findViewById(R.id.prenocisca);
     }
 
-    public void prikaziPonudnike(View view) {
+    public void prikaziPrenocisca(View view) {
         if (view != null) {
             JsonArrayRequest request = new JsonArrayRequest(url, jsonArraylistener, errorListener);
             requestQueue.add(request);
@@ -50,22 +50,21 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject object = response.getJSONObject(i);
                     String naziv = object.getString("Naziv");
-                    String email = object.getString("Email");
-                    String telefon = object.getString("Telefon");
+                    String cena = object.getString("CenaNaPrenocitev");
                     String naslov = object.getString("Naslov");
                     String postnast = object.getString("PostnaStevilka");
 
-                    data.add(naziv +" "+ email +" "+ telefon +" "+ naslov +" "+ postnast);
+                    data.add(naziv +" "+ cena +" "+ naslov +" "+ postnast);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     return;
                 }
             }
-            ponudniki.setText("");
+            prenocisca.setText("");
 
             for (String row : data) {
-                String currentText = ponudniki.getText().toString();
-                ponudniki.setText(currentText + "\n\n" + row);
+                String currentText = prenocisca.getText().toString();
+                prenocisca.setText(currentText + "\n\n" + row);
             }
         }
     };
@@ -76,4 +75,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("REST error", error.getMessage());
         }
     };
+
+    public static final String EXTRA_MESSAGE = "com.example.najdiposteljo.MESSAGE";
+
+    public void addPrenocisceActivity(View view) {
+        Intent intent = new Intent(this, AddPrenocisceActivity.class);
+        String message = "Dodaj prenočišče v ponudbo";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
 }
