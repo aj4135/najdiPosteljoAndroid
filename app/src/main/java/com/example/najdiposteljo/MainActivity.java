@@ -22,12 +22,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity {
-
     private RequestQueue requestQueue;
     private TextView ponudniki;
-    private String url = "pridobi link od kolega";
+    private String url = "link do ponudnikov";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +76,4 @@ public class MainActivity extends AppCompatActivity {
             Log.d("REST error", error.getMessage());
         }
     };
-
 }
