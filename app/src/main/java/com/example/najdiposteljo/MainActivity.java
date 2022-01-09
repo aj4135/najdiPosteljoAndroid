@@ -29,7 +29,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private TextView prenocisca;
-    private String url = "link do prenočišč";
+    private String url = "https://seminarska-najdi-posteljo.azurewebsites.net/api/v1/Prenocisce";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

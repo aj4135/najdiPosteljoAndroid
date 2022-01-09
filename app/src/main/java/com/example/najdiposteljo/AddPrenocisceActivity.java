@@ -36,7 +36,7 @@ public class AddPrenocisceActivity extends AppCompatActivity {
     private EditText postnaSt;
 
     private RequestQueue requestQueue;
-    private String url = "link od prenočišč";
+    private String url = "https://seminarska-najdi-posteljo.azurewebsites.net/api/v1/Prenocisce";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
