@@ -55,10 +55,10 @@ public class AddPrenocisceActivity extends AppCompatActivity {
         this.status.setText("Posting to " + url);
         try {
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("Naziv", naziv.getText());
-            jsonBody.put("CenaNaPrenocitev", cena.getText());
-            jsonBody.put("Naslov", naslov.getText());
-            jsonBody.put("PostnaStevilka", postnaSt.getText());
+            jsonBody.put("naziv", naziv.getText());
+            jsonBody.put("cenaNaPrenocitev", cena.getText());
+            jsonBody.put("naslov", naslov.getText());
+            jsonBody.put("postnaStevilka", postnaSt.getText());
 
             final String mRequestBody = jsonBody.toString();
             status.setText(mRequestBody);

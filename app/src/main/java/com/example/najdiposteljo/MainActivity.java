@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject object = response.getJSONObject(i);
-                    String naziv = object.getString("Naziv");
-                    String cena = object.getString("CenaNaPrenocitev");
-                    String naslov = object.getString("Naslov");
-                    String postnast = object.getString("PostnaStevilka");
+                    String naziv = object.getString("naziv");
+                    String cena = object.getString("cenaNaPrenocitev");
+                    String naslov = object.getString("naslov");
+                    String postnast = object.getString("postnaStevilka");
 
                     data.add(naziv +" "+ cena +" "+ naslov +" "+ postnast);
                 } catch (JSONException e) {
